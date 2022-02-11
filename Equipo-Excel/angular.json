@@ -1,11 +1,17 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "e4b4012f-9d07-415b-967a-42ae886959ea"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ReadExcel": {
+    "front-generate-reports": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
         "@schematics/angular:application": {
           "strict": true
         }
@@ -17,19 +23,24 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ReadExcel",
+            "outputPath": "dist/front-generate-reports",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@fortawesome/fontawesome-free/js/all.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -68,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ReadExcel:build:production"
+              "browserTarget": "front-generate-reports:build:production"
             },
             "development": {
-              "browserTarget": "ReadExcel:build:development"
+              "browserTarget": "front-generate-reports:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ReadExcel:build"
+            "browserTarget": "front-generate-reports:build"
           }
         },
         "test": {
@@ -89,12 +100,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -102,5 +114,5 @@
       }
     }
   },
-  "defaultProject": "ReadExcel"
+  "defaultProject": "front-generate-reports"
 }
